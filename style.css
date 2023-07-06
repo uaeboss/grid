@@ -1,0 +1,235 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.5rem; /* Schriftgröße Root-Elemement*/
+}
+
+.borderblack {
+  border: 2px solid #000;
+}
+
+.wrapper {
+  /* Der Wrapper ist nicht zwingend notwendig, ich persönlich würde ihn jedoch empfehlen */
+  height: 100vh;
+  width: 100vw;
+  background-color: #c6c2c2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 25px 0 25px 0;
+}
+
+.container {
+  /* Parent-Element */
+  width: 80vw; /* Breite Grid-Container*/
+  height: 100vh; /* Höhe Grid-Container */
+  display: grid; /* Anzeigeart (ähnlich zu display: flex */
+  grid-template-columns: 1fr 1fr 1fr; /* Spalten-Anzahl und -Breite des Grid-Containers - Alternative Schreibweise: grid-template-columns: repeat(5, 1fr) */
+  grid-template-rows: 1fr 1fr 1fr 1fr; /* Zeilen-Anzahl und -Breite des Grid-Containers - Alternative Schreibweise: grid-template-rows: repeat(5, 1fr) */
+  gap: 0px 0px; /* Abstände zwischen den Spalten und Zeilen */
+  grid-template-areas: /* Benennung der "areas" des Grid-Containers. Die Namen können frei vergeben werden. Nicht genutzte Bereiche werden mit einem Punkt markiert (".").*/
+    "div1 div2 div3"
+    "div4 div5 div6"
+    "div7 div8 div9"
+    "nestedgrid . ."
+    "nestedgrid . .";
+}
+
+/* ACHTUNG! Wichtig beim Grid-System ist dabei dass die Spalten- und Zeilenanzahl bei "grid-template-columns" und "grid-template-rows" mit denen bei "grid-template-areas" übereinstimmt, sonst kann es zu einer Fehlerhaften Anzeige kommen!!! */
+
+.div1 {
+  /* Child-Element */
+  grid-area: div1;
+  background-color: rgb(222, 146, 146);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.div2 {
+  /* Child-Element */
+  grid-area: div2;
+  background-color: rgb(214, 123, 211);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.div3 {
+  /* Child-Element */
+  grid-area: div3;
+  background-color: rgb(122, 215, 136);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.div4 {
+  /* Child-Element */
+  grid-area: div4;
+  background-color: rgb(103, 219, 223);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.div5 {
+  /* Child-Element */
+  grid-area: div5;
+  background-color: rgb(110, 88, 202);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div6 {
+  grid-area: div6;
+  background-color: rgb(101, 96, 121);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.div7 {
+  grid-area: div7;
+  background-color: rgb(167, 61, 160);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.div8 {
+  grid-area: div8;
+  background-color: rgb(196, 126, 29);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.div9 {
+  grid-area: div9;
+  background-color: rgb(112, 148, 36);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+/* ".nestedgrid" ist ein Grid-Container in einem Bereich eines übergeordneten Grid-Containers */
+.nestedgrid {
+  font-size: 0.5rem;
+  grid-area: nestedgrid;
+  display: grid;
+  grid-template-columns: 6em 1fr;
+  grid-template-rows: 1fr 50px;
+  gap: 0px 0px;
+  grid-template-areas:
+    "grid1 grid2"
+    "grid3 grid4";
+    background-color: #3f9c72;
+}
+
+.grid1 {
+  grid-area: grid1;
+  border: 2px dotted #4a4f96;
+}
+.grid2 {
+  grid-area: grid2;
+  border: 2px dotted #0f422b;
+}
+.grid3 {
+  grid-area: grid3;
+  border: 2px dotted #98227f;
+}
+.grid4 {
+  grid-area: grid4;
+  border: 2px dotted #b8a81b;
+}
+
+
+
+/* Gleiches Ergebnis wie oben, hier werden die Bereiche jedoch über die einzelenen Zeilen und Spalten definiert */
+
+/* .container {
+  width: 80vw;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div1 {
+  grid-area: 1 / 1 / 2 / 6;
+  background-color: rgb(222, 146, 146);
+}
+.div2 {
+  grid-area: 2 / 1 / 3 / 6;
+  background-color: rgb(214, 123, 211);
+}
+.div3 {
+  grid-area: 3 / 1 / 4 / 6;
+  background-color: rgb(122, 215, 136);
+}
+.div4 {
+  grid-area: 4 / 1 / 5 / 6;
+  background-color: rgb(103, 219, 223);
+}
+.div5 {
+  grid-area: 5 / 1 / 6 / 6;
+  background-color: rgb(110, 88, 202);
+} */
+
+/* Bei Grid ist es problemlos möglich
+
+/* @media only screen and (max-width: 1040px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "div1 div1 div1 div1"
+          "div2 div2 div2 div2"
+          "div3 div3 div3 div3"
+          "div4 div4 div4 div4"
+          "div5 div5 div5 div5";
+      }
+
+    body {
+        font-size: 1.5rem;
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "div1"
+          "div2"
+          "div3"
+          "div4"
+          "div5";
+      }
+
+      body {
+        font-size: 1rem;
+    }
+  } */
+
+/* @media only screen and (max-width: 400px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          "div1"
+          "div2"
+          "div3"
+          "div4"
+          "div5";
+      }
+
+      body {
+        font-size: 0.7rem;
+    }
+  } */
+
+/* Hinweis: Es ist egal ob man mit der mobilen Version oder der Desktop-Version startet. Wichtig ist, dass das Grid-System außerhalb der Media-Querys definiert wird (default). 
+  
+     Alle Eigenschaften die nicht verändert werden müssen nicht mit in die Media-Querys übernommen werden, da diese durch den "default" festgelegt sind.*/
